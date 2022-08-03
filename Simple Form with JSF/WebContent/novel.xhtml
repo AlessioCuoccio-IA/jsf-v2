@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Novel</title>
+</h:head>
+
+<h:body>
+
+	
+	Name: #{novelBean.name} <br/>
+	Author: #{novelBean.author} <br/>
+	Editor: #{novelBean.editor} <br/>
+	Edition: #{novelBean.edition} <br/>
+	Price: #{novelBean.price} <br/>
+	Genre: 
+	<ul>
+		<ui:repeat var="temp" value="#{novelBean.genre}">
+			<li>#{temp}</li>
+		</ui:repeat>
+	</ul> <br/>
+	Description: #{novelBean.description} <br/>
+	Release date: #{novelBean.releaseDate} <br/>
+	Origin: #{novelBean.origin} <br/>
+	Sale out of India: #{novelBean.saleOutOfIndia} <br/>
+</h:body>
+</html>

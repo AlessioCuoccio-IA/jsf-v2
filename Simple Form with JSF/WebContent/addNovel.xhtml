@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Add Novel</title>
+</h:head>
+
+<h:body>
+<h1>Add Novel</h1>
+	<h:form>
+		<h:inputText id="name" value="#{novelBean.name}"/> <br/>
+		<h:inputText id="author" value="#{novelBean.author}"/> <br/>
+		<h:inputText id="editor" value="#{novelBean.editor}"/> <br/>
+		<h:inputText id="edition" value="#{novelBean.edition}"/> <br/>
+		<h:inputText id="price" value="#{novelBean.price}"/> <br/>
+		
+		<h:selectManyCheckbox id="genre" value="#{novelBean.genre}"> <br/>
+			<f:selectItem itemLabel="Comedy" itemValue="comedy"/>
+			<f:selectItem itemLabel="Drama" itemValue="drama"/>
+			<f:selectItem itemLabel="Romance" itemValue="romance"/>
+		</h:selectManyCheckbox>
+		
+		<h:inputTextarea id="description" value="novelBean.description"/> <br/>
+		<h:inputText id="releaseDate" value="#{novelBean.releaseDate}"/> <br/>
+		
+		<h:selectOneMenu id="origin" value="#{novelBean.origin}"> <br/>
+			<f:selectItem itemLabel="India" itemValue="india"/>
+			<f:selectItem itemLabel="Out of India" itemValue="outOfIndia"/>
+		</h:selectOneMenu>
+		
+		<h:selectOneRadio id="saleOutOfIndia" value="#{novelBean.saleOutOfIndia}"> <br/>
+			<f:selectItem itemLabel="Yes" itemValue="yes"/>
+			<f:selectItem itemLabel="No" itemValue="no"/>
+		</h:selectOneRadio>
+		
+		<h:commandButton id="submit" value="Add" action="novel"/>
+	</h:form>
+</h:body>
+
+
+</html>

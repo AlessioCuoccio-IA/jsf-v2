@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Employee Sign Up</title>
+	<style>
+		.validationError{
+		color: red
+		}
+		
+	</style>
+</h:head>
+
+<h:body>
+	<h1>Employee Sign Up</h1>
+	<h:form>
+		Fullname: <h:inputText id="fullname" value="#{employee.fullname}" 
+			required="true" 
+			label="Fullname"
+			validatorMessage="Length min 3 and max 30"> <br/>
+		<f:validateLength for="fullname" minimum="3" maximum="30"/>
+		</h:inputText>
+		<h:message for="fullname" styleClass="validationError"/> <br/>
+		
+		Age: <h:inputText id="age" value="#{employee.age}" 
+			required="true" 
+			label="Age"
+			validatorMessage="Age between 18 and 99"> <br/>
+		<f:validateLongRange for="age" minimum="18" maximum="99"/>	
+		</h:inputText>
+		<h:message for="age" styleClass="validationError"/> <br/>
+				
+		Genre: <h:selectOneRadio id="genre" value="#{employee.genre}" required="true" label="Genre"> <br/>
+			<f:selectItem itemLabel="Male" itemValue="male"/>
+			<f:selectItem itemLabel="Female" itemValue="female"/>
+		</h:selectOneRadio>
+		<h:message for="genre" styleClass="validationError"/> <br/>
+			
+		Status: <h:selectOneMenu id="status" value="#{employee.status}" > <br/>
+			<f:selectItem itemLabel="Married" itemValue="Married"/>
+			<f:selectItem itemLabel="Single" itemValue="Single"/>
+		</h:selectOneMenu>	<br/>
+			
+		Preferred Department: <h:selectManyCheckbox id="prefDep" value="#{employee.prefDep}" required="true" label="Preferred Departments"> <br/>
+			<f:selectItem itemLabel="IT" itemValue="IT"/>
+			<f:selectItem itemLabel="Finance" itemValue="Finance"/>
+			<f:selectItem itemLabel="HR" itemValue="HR"/>
+		</h:selectManyCheckbox>
+		<h:message for="prefDep" styleClass="validationError"/> <br/>
+		
+		Referral Code: <h:inputText id="refCode" value="#{employee.refCode}" required="true" label="Referral Code"/> <br/>
+		<h:message for="refCode" styleClass="validationError"/> <br/>
+		
+		Additional Comments: <h:inputTextarea id="additionalComments" value="#{employee.additionalComments}" required="true" label="Additional Comments"/> <br/>
+		<h:message for="additionalComments" styleClass="validationError"/> <br/>
+		
+		Email: <h:inputText id="email" value="#{employee.email}" 
+			required="true" 
+			label="email"
+			validator="#{employee.validateEmail}">
+			<f:validateRegex pattern="(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"></f:validateRegex>
+		</h:inputText>
+		
+		<h:commandButton value="Submit" action="employeeRes"/>
+	</h:form>
+	
+	<h:messages styleClass="validationError"/>
+</h:body>
+</html>
